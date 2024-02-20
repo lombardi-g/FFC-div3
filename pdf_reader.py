@@ -1,6 +1,6 @@
 from PyPDF2 import PdfReader
 
-match_summary_pdf = "VRExFIG.pdf"
+match_summary_pdf = "FIGxMAN.pdf"
 reader = PdfReader(match_summary_pdf)
 
 def extract_info_after_label(text, label):
@@ -30,3 +30,10 @@ if home:
 else:
     fig_final_score = final_score[1]
     opponent_final_score = final_score[0]
+
+# Time and additional minutes
+first_half_added_minutes = extract_info_after_label(text, "Acréscimo:").split(" min")[0]
+second_half_added_minutes = extract_info_after_label(extract_info_after_label(text, "Término do 2"),"Acréscimo:").split(" m")[0]
+first_half_minutes = 45 + int(first_half_added_minutes)
+second_half_minutes = 45 + int(second_half_added_minutes)
+match_minutes = first_half_minutes + second_half_minutes
