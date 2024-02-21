@@ -26,6 +26,7 @@ city = full_location.split(" / ")[1]
 time = extract_until_line_break(full_match_date, "Horário:")[:5]
 date = full_match_date[:10]
 home = True if stadium =="Orlando Scarpelli" else False
+opponent = [team for team in extract_until_line_break(extract_until_doc_end(cbf_pdf, "Jogo:"), "Jogo:").split(" X ") if team != "Figueirense Fc S.a.f. / SC"]
 
 # Score information
 final_score = extract_until_line_break(cbf_pdf, "Resultado Final:").strip().split(" X ")
