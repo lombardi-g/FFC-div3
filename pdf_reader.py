@@ -25,6 +25,7 @@ stadium = full_location.split(" / ")[0]
 city = full_location.split(" / ")[1]
 time = extract_until_line_break(full_match_date, "Horário:")[:5]
 date = full_match_date[:10]
+round = extract_until_line_break(cbf_pdf, "Rodada:")
 home = True if stadium =="Orlando Scarpelli" else False
 opponent = [team for team in extract_until_line_break(extract_until_doc_end(cbf_pdf, "Jogo:"), "Jogo:").split(" X ") if team != "Figueirense Fc S.a.f. / SC"]
 
@@ -43,3 +44,5 @@ second_half_added_minutes = extract_until_line_break(extract_until_line_break(cb
 first_half_minutes = 45 + int(first_half_added_minutes)
 second_half_minutes = 45 + int(second_half_added_minutes)
 match_minutes = first_half_minutes + second_half_minutes
+
+print(round)
