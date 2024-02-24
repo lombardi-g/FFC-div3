@@ -15,8 +15,9 @@ def extract_until_doc_end(text, label):
     return text[start_index:]
 
 # def extract_from_summary():
-page = reader.pages[0]
-cbf_pdf = page.extract_text()
+cbf_pdf = ""
+for page in reader.pages:
+    cbf_pdf += page.extract_text()
 
 # General information
 full_match_date = extract_until_line_break(cbf_pdf, "Data:")
@@ -45,4 +46,5 @@ first_half_minutes = 45 + int(first_half_added_minutes)
 second_half_minutes = 45 + int(second_half_added_minutes)
 match_minutes = first_half_minutes + second_half_minutes
 
-print(round)
+# Yellow and red cards
+yellow_card_summary = extract_until_doc_end(extract_until_doc_end(cbf_pdf,"Cartões Amarelos").split("Cartões Vermelhos")[0], "Equipe")
