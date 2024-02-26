@@ -46,5 +46,8 @@ first_half_minutes = 45 + int(first_half_added_minutes)
 second_half_minutes = 45 + int(second_half_added_minutes)
 match_minutes = first_half_minutes + second_half_minutes
 
+# Goal information
+goal_summary = extract_until_doc_end(cbf_pdf,"Gols").split("Cartões Amarelos")[0]
+
 # Yellow and red cards
 yellow_card_summary = extract_until_doc_end(extract_until_doc_end(cbf_pdf,"Cartões Amarelos").split("Cartões Vermelhos")[0], "Equipe")
