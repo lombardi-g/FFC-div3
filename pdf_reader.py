@@ -1,6 +1,6 @@
 from PyPDF2 import PdfReader
 
-match_summary_pdf = "FIGxMAN.pdf"
+match_summary_pdf = "FIGxARN.pdf"
 reader = PdfReader(match_summary_pdf)
 
 def extract_until_line_break(text, label):
@@ -48,6 +48,8 @@ match_minutes = first_half_minutes + second_half_minutes
 
 # Goal information
 goal_summary = extract_until_doc_end(cbf_pdf,"Gols").split("Cartões Amarelos")[0]
+if goal_summary != "NÃO HOUVE MARCADORES":
+    ...
 
 # Yellow and red cards
 yellow_card_summary = extract_until_doc_end(extract_until_doc_end(cbf_pdf,"Cartões Amarelos").split("Cartões Vermelhos")[0], "Equipe")
