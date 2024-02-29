@@ -49,7 +49,10 @@ match_minutes = first_half_minutes + second_half_minutes
 # Goal information
 goal_summary = extract_until_doc_end(cbf_pdf,"Gols").split("Cartões Amarelos")[0]
 if goal_summary != "NÃO HOUVE MARCADORES":
-    goal_summary = extract_until_doc_end(goal_summary,"Equipe").split("NR = Normal")[0]
+    goal_summary = extract_until_doc_end(goal_summary,"Equipe").split("NR = Normal")[0].split("\n")
+    goal_summary = [item for item in goal_summary if item != '']
+    for goal in goal_summary:
+        ...
 
 # Yellow and red cards
 yellow_card_summary = extract_until_doc_end(extract_until_doc_end(cbf_pdf,"Cartões Amarelos").split("Cartões Vermelhos")[0], "Equipe")
