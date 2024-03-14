@@ -56,5 +56,3 @@ if goal_summary != "NÃO HOUVE MARCADORES":
 
 # Yellow and red cards
 yellow_card_summary = extract_until_doc_end(extract_until_doc_end(cbf_pdf,"Cartões Amarelos").split("Cartões Vermelhos")[0], "Equipe")
-
-print(goal_summary)
